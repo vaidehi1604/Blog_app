@@ -115,12 +115,6 @@ router.delete('/:userId',(req,res,next)=>{
     })
 })
 
-//logout
-router.delete('/logout',checkAuth,async (req,res)=>{
-  const token=process.env.TOKEN;
-    jwt.distroy(token);
-}); 
-
 
 
 
