@@ -6,7 +6,7 @@ const user=require('../models/user');
 const bcrypt=require('bcrypt');
 const checkAuth=require('../middleware/check-auth');
 // const header=require('header');
-
+const logout=require('../controller/user');
 const dotenv = require("dotenv");
 dotenv.config();
 const jwt=require('jsonwebtoken');
@@ -50,6 +50,8 @@ router.post('/signup',(req,res)=>{
     })
     
 })
+
+
 
 //login route
 
@@ -116,6 +118,18 @@ router.delete('/:userId',(req,res,next)=>{
 })
 
 
+router.post('/logout',checkAuth,async(req,res,next)=>{
+// let oldTokens=user.tokens||[]
+// if(oldTokens.length){
+//    oldTokens= oldTokens.filter(t=>{
+//         const timediff=(Date.now()-parseInt(t.signedAt))/1000
+//         if(timediff<86400){
+//             return t
+//         }
+//     })
+// }
 
+// await user.findByIdAndUpdate(user._id,{tokens:[...oldTokens,{token,signedAt:Date.now().toString}]})
 
+})
 module.exports=router;

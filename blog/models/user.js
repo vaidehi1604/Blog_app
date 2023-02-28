@@ -9,5 +9,6 @@ const userSchema = mongoose.Schema({
     match: /^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$/,
   },
   password: { type: String, required: true },
+  tokens:[{type:Object}]
 });
 module.exports = mongoose.model("users", userSchema);
