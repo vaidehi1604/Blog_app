@@ -10,11 +10,19 @@ const postSchema = mongoose.Schema({
     ref: "categories",
     required: true,
   },
-  title: { type: String, required: true },
+  title: {
+    type: String,
+    required: true,
+    match: /^[\w'\-,.][^0-9_!¡?÷?¿/\\+=@#$%ˆ&*(){}|~<>;:[\]]{2,}$/,
+  },
   description: { type: String, required: true },
-        //date:MM/DD/YY
+  //date:MM/DD/YY
   publishDate: { type: Date, required: true },
-  author: { type: String, required: true },
+  author: {
+    type: String,
+    required: true,
+    match: /^[\w'\-,.][^0-9_!¡?÷?¿/\\+=@#$%ˆ&*(){}|~<>;:[\]]{2,}$/,
+  },
   slug: { type: String, slug: "title" },
 });
 module.exports = mongoose.model("Post", postSchema);
